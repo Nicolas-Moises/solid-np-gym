@@ -30,3 +30,5 @@ Gympass style app.
 - [ ] Os dados da aplicação precisam estar persistidos em um banco PostgresSQL;
 - [ ] Todas as listas de dados precisam estar paginadas com 20 items por página;
 - [ ] O usuário deve ser identificado por um JWT;
+
+Rodar docker compose up -d para rodar banco
