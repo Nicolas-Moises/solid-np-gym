@@ -76,5 +76,28 @@ describe('Register Use Case', () => {
         })
 
         expect(checkIn.id).toEqual(expect.any(String))
-    })//,
+    })
+    
+    it('should not be able to check in on distant gym', async () => {
+        gymsRepository.items.push({
+            id: 'gym-02',
+            title: 'Academia Body Space',
+            description: 'Rede',
+            latitude: new Decimal(-23.3780481),
+            longitude: new Decimal(-46.6567397),
+            phone: ''
+        })
+
+        await expect(() => sut.execute({
+            gymId: 'gym-02',
+            userId: 'user-01',
+            userLatitude: -23.5513716,
+            userLongitude: -46.8931377
+        })).rejects.toBeInstanceOf(Error)
+    })
+
 })
+
+
+// até 100m -23.5466957,-46.9082178
+// mais de 100m -23.3780481,-46.6567397
