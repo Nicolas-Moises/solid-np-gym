@@ -29,6 +29,6 @@ Gympass style app.
 - [x] A senha do usuário precisa estar criptografada;
 - [x] Os dados da aplicação precisam estar persistidos em um banco PostgresSQL;
 - [x] Todas as listas de dados precisam estar paginadas com 20 items por página;
-- [ ] O usuário deve ser identificado por um JWT;
+- [x] O usuário deve ser identificado por um JWT;
 
 Rodar docker compose up -d para rodar banco

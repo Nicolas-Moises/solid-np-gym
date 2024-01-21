@@ -7,13 +7,14 @@
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --dir src/use-cases",
+    "test:watch": "vitest --dir src/use-cases",
+    "test:e2e": "vitest run --dir src/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nicolas Moises",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
