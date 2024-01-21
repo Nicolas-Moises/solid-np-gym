@@ -10,7 +10,6 @@ export class PrismaUsersRepository implements UsersRepository {
                 id,
             },
         })
-
         return user
     }
 
@@ -20,7 +19,6 @@ export class PrismaUsersRepository implements UsersRepository {
                 email,
             },
         })
-
         return user
     }
 
@@ -28,7 +26,6 @@ export class PrismaUsersRepository implements UsersRepository {
         const user = await prisma.user.create({
             data,
         })
-
         return user
     }
 }
