@@ -31,4 +31,9 @@ Gympass style app.
 - [x] Todas as listas de dados precisam estar paginadas com 20 items por página;
 - [x] O usuário deve ser identificado por um JWT;
 
-Rodar docker compose up -d para rodar banco
+## Features futuras
+
+- [ ] O usuário deve conseguir editar as credenciais;
+- [ ] A academia deve poder cadastrar logo;
+- [ ] A academia deve poder cadastrar fotos do local;
+- [ ] O usuário deve poder cadastrar um avatar;
