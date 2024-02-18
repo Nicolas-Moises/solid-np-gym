@@ -1,40 +1,44 @@
-import { CheckIn } from '@prisma/client'
 import { CheckInsRepository } from '@/repositories/check-ins-repository'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { LateCheckInValidationError } from '@/use-cases/errors/late-check-in-validation-error'
+import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
+import { CheckIn } from '@prisma/client'
 import dayjs from 'dayjs'
-import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
 
-interface ValidateCheckInUseCaseRequest{
+interface ValidateCheckInUseCaseRequest {
   checkInId: string
 }
 
 interface ValidateCheckInUseCaseResponse {
   checkIn: CheckIn
-} 
+}
 
 export class ValidateCheckInUseCase {
-    constructor(
-        private checkinsRepository: CheckInsRepository,
-    ) {}
+    constructor(private checkInsRepository: CheckInsRepository) {}
 
-    async execute({ checkInId }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
+    async execute({
+        checkInId,
+    }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
+        const checkIn = await this.checkInsRepository.findById(checkInId)
 
-        const checkIn = await this.checkinsRepository.findById(checkInId)
-
-        if(!checkIn) {
+        if (!checkIn) {
             throw new ResourceNotFoundError()
         }
 
-        const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(checkIn.created_at, 'minutes')
-        checkIn.validated_at = new Date()
+        const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
+            checkIn.created_at,
+            'minutes',
+        )
 
-        if(distanceInMinutesFromCheckInCreation > 20) {
+        if (distanceInMinutesFromCheckInCreation > 20) {
             throw new LateCheckInValidationError()
         }
-        await this.checkinsRepository.save(checkIn)
-        
+
+        checkIn.validated_at = new Date()
+
+        await this.checkInsRepository.save(checkIn)
+
         return {
-            checkIn
+            checkIn,
         }
     }
 }
