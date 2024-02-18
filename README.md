@@ -21,8 +21,8 @@ Gympass style app.
 - [x] O usuário não pode fazer 2 check-ins no mesmo dia;
 - [x] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
 - [x] O check-in só pode ser validado em até 20 minutos após criado;
-- [ ] O check-in só pode ser validado por administradores;
-- [ ] A academia só pode ser cadastrada por administradores;
+- [x] O check-in só pode ser validado por administradores;
+- [x] A academia só pode ser cadastrada por administradores;
 
 ## RNFs (Regras não-funcionais)
 
@@ -31,4 +31,9 @@ Gympass style app.
 - [x] Todas as listas de dados precisam estar paginadas com 20 items por página;
 - [x] O usuário deve ser identificado por um JWT;
 
-Rodar docker compose up -d para rodar banco
+## Features futuras
+
+- [ ] O usuário deve conseguir editar as credenciais;
+- [ ] A academia deve poder cadastrar logo;
+- [ ] A academia deve poder cadastrar fotos do local;
+- [ ] O usuário deve poder cadastrar um avatar;
