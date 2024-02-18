@@ -21,6 +21,7 @@ describe('Validate Check-in (e2e)', () => {
         const gym = await prisma.gym.create({
             data: {
                 title: 'JavaScript Gym',
+                description: 'Academia do bairro',
                 latitude: -27.2092052,
                 longitude: -49.6401091,
             },
